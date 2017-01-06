@@ -1,0 +1,34 @@
+{
+  "name": "deployable-timer",
+  "version": "0.1.0",
+  "description": "Timer",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha",
+    "test:debug": "DEBUG='*' mocha debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deployable/node-deployable-timer.git"
+  },
+  "keywords": [
+    "deployable",
+    "module"
+  ],
+  "author": "Matt Hoyle <code at deployable.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deployable/node-deployable-timer/issues"
+  },
+  "homepage": "https://github.com/deployable/deployable-timer#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "sinon": "^1.17.6"
+  },
+  "dependencies": {
+    "debug": "^2",
+    "deployable-mixin-class_uid": "^0.1.0",
+    "mixwith": "^0.1.1"
+  }
+}
