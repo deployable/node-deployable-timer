@@ -1,4 +1,4 @@
-const {Timer} = require('../')
+const Timer = require('../')
 
 describe('Unit::deployable-timer', function(){
 
