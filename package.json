@@ -5,7 +5,10 @@
   "main": "lib/timer.js",
   "scripts": {
     "test": "mocha",
-    "test:debug": "DEBUG='*' mocha debug"
+    "test:debug": "DEBUG='*' mocha debug",
+    "test:coverage": "istanbul cover _mocha && istanbul check-coverage",
+    "release:test": "set -uex; yarn test; npm version prerelease; npm publish --tag testing --access public ",
+    "release:patch": "set -uex; yarn run test:coverage; npm version patch; git push; npm publish --access public; git push --tags"
   },
   "repository": {
     "type": "git",
