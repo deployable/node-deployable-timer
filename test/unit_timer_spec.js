@@ -1,6 +1,6 @@
-const debug = require('debug')('dply:test:unit:timer')
+/* global expect sinon */
+//const debug = require('debug')('dply:test:unit:timer')
 const Timer = require('../lib/timer')
-const expect = require('chai').expect
 
 
 describe('Unit::Timer', function () {
@@ -46,7 +46,7 @@ describe('Unit::Timer', function () {
       })
 
       it('should return a current time value', function(done){
-        let a = timer.start()
+        timer.start()
         setTimeout(()=>{
           expect( timer.current() ).to.be.a.number
           expect( timer.current() ).to.be.gt(2)
@@ -55,7 +55,52 @@ describe('Unit::Timer', function () {
         },3)
       })
 
+      it('should error on multiple starts', function(){
+        timer.start()
+        expect( ()=> timer.start() ).to.throw('Timer already started')
+      })
+
+      it('should error on multiple stops', function(){
+        timer.start()
+        timer.stop()
+        expect( ()=> timer.stop() ).to.throw('Timer already stopped')
+      })
+
+      it('should error on total without start', function(){
+        expect( ()=> timer.total() ).to.throw('Timer not started')
+      })
+
+      it('should error on total without stop', function(){
+        timer.start()
+        expect( ()=> timer.total() ).to.throw('Timer not stopped')
+      })
+
+      it('should error on current without start', function(){
+        expect( ()=> timer.current() ).to.throw('Timer not started')
+      })
+
+      it('should log', function(){
+        let spy = timer.log_fn = sinon.spy()
+        timer.log('test')
+        expect( spy.called ).to.be.true
+      })
+
+      it('should log an id', function(){
+        timer = new Timer('anid')
+        let spy = timer.log_fn = sinon.spy()
+        timer.log('test')
+        expect( spy.called ).to.be.true
+      })
+
+      it('should stop and log', function(){
+        let spy = timer.log_fn = sinon.spy()
+        timer.start()
+        timer.stopAndLog()
+        expect( spy.called ).to.be.true
+      })
+
     })
+
 
 
     describe('statics', function(){
@@ -66,10 +111,8 @@ describe('Unit::Timer', function () {
         expect( timer.current() ).to.not.throw
         expect( timer.current() ).to.be.a.number
       })
-
     })
 
 
   })
-
 })
