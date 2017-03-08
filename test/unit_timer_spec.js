@@ -95,7 +95,7 @@ describe('Unit::Timer', function () {
       it('should stop and log', function(){
         let spy = timer.log_fn = sinon.spy()
         timer.start()
-        timer.stopAndLog()
+        timer.endLog()
         expect( spy.called ).to.be.true
       })
 
