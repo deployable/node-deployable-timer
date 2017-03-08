@@ -1,5 +1,5 @@
-const debug = require('debug')('dply:test:unit:timer')
-const Timer = require('../lib/timer')
+const debug = require('debug')('dply:test:unit:timer_class')
+const Timer = require('../lib/class')
 const expect = require('chai').expect
 
 
@@ -22,12 +22,6 @@ describe('Unit::Timer', function () {
       it('should have a uid', function(){
         expect( timer.class_uid ).to.match( /^[a-f0-9-]{36}$/ )
       })
-
-      it('should have a prototype of the last mixin', function(){
-        let parent = Object.getPrototypeOf(timer.constructor).name
-        expect( parent ).to.equal( 'MixinClassUid' )
-      })
-
 
       it('should start and return a time', function(){
         expect( timer.start() ).to.be.a.number

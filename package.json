@@ -1,7 +1,7 @@
 {
-  "name": "deployable-timer",
+  "name": "@deployable/timer",
   "version": "0.2.0",
-  "description": "Timer",
+  "description": "A Timer class, for timing things",
   "main": "lib/timer.js",
   "scripts": {
     "test": "mocha",
@@ -15,12 +15,12 @@
     "deployable",
     "module"
   ],
-  "author": "Matt Hoyle <code at deployable.co>",
+  "author": "Matt Hoyle <code ta deployable.co>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/deployable/node-deployable-timer/issues"
   },
-  "homepage": "https://github.com/deployable/deployable-timer#readme",
+  "homepage": "https://github.com/deployable/node-deployable-timer#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
